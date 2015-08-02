@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+env
 AGENT_DIR="${HOME}/agent"
 
 if [ -z "$TEAMCITY_SERVER" ]; then
