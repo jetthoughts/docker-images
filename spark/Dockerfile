@@ -1,6 +1,10 @@
 FROM jetthoughts/centos7
 MAINTAINER Michael Nikitochkin <miry.sof@gmail.com>
 
+# Install SBT tool to build scala applications
+RUN curl https://bintray.com/sbt/rpm/rpm | tee /etc/yum.repos.d/bintray-sbt-rpm.repo
+RUN yum install sbt -y
+
 # Create Spark User
 RUN adduser spark
 
