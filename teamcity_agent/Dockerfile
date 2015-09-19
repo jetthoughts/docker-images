@@ -37,4 +37,5 @@ RUN chown teamcity:teamcity -R /opt/rbenv
 
 VOLUME /home/teamcity
 
+#docker run -v /Users/miry/tmp/teamcity_agent:/home/teamcity -e TEAMCITY_SERVER=http://ci.jetthoughts.com -e DOCKER_HOST=tcp://192.168.59.103:2376 -e DOCKER_TLS_VERIFY=1 -e DOCKER_CERT_PATH=/home/teamcity/boot2docker-vm -it jetthoughts/teamcity-agent:latest 
 CMD su teamcity -l -c "TEAMCITY_SERVER=$TEAMCITY_SERVER DOCKER_HOST=$DOCKER_HOST DOCKER_TLS_VERIFY=$DOCKER_TLS_VERIFY DOCKER_CERT_PATH=$DOCKER_CERT_PATH /setup.sh run"
