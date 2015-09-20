@@ -50,4 +50,4 @@ RUN yum install -y epel-release qtwebkit-devel
 RUN yum install -y epel-release qtwebkit-devel
 RUN ln -s /usr/lib64/qt4/bin/qmake /usr/bin/qmake
 RUN yum install -y xorg-x11-server-Xvfb
-
+RUN yum install -y psmisc
