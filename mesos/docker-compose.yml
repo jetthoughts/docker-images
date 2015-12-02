@@ -1,0 +1,14 @@
+master:
+  image: jetthoughts/mesos
+  ports:
+    - "5050:5050"
+  hostname: master
+  privileged: true
+  command: mesos-master --registry=in_memory --ip=0.0.0.0
+slave:
+  image: jetthoughts/mesos
+  links:
+    - master:master
+  command: mesos-slave --master=master:5050
+  privileged: true
+
