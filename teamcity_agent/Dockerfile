@@ -25,6 +25,14 @@ RUN yum install -y \
                openssl-devel make bzip2 autoconf automake libtool \
                bison curl sqlite-devel zip ruby-dev mysql-devel ruby-devel rubygems
 
+RUN yum install -y epel-release qtwebkit-devel
+RUN yum install -y epel-release qtwebkit-devel
+RUN ln -s /usr/lib64/qt4/bin/qmake /usr/bin/qmake
+RUN yum install -y xorg-x11-server-Xvfb
+RUN yum install -y psmisc
+RUN yum install -y mysql postgresql postgresql-libs postgresql-devel
+RUN yum install -y nodejs
+
 RUN mkdir -p /opt
 RUN git clone https://github.com/sstephenson/rbenv.git /opt/rbenv
 RUN git clone https://github.com/sstephenson/ruby-build.git /opt/rbenv/plugins/ruby-build
@@ -40,14 +48,13 @@ RUN bash -l -c 'for i in "2.2.3" ; do rbenv install $i ; rbenv global $i; gem in
 
 RUN chown teamcity:teamcity -R /opt/rbenv
 
-#VOLUME /home/teamcity
+VOLUME /home/teamcity
 
-#docker run -v /Users/miry/tmp/teamcity_agent:/home/teamcity -e TEAMCITY_SERVER=http://ci.jetthoughts.com -e DOCKER_HOST=tcp://192.168.59.103:2376 -e DOCKER_TLS_VERIFY=1 -e DOCKER_CERT_PATH=/home/teamcity/boot2docker-vm -it jetthoughts/teamcity-agent:latest 
-#CMD su teamcity -l -c "TEAMCITY_SERVER=$TEAMCITY_SERVER DOCKER_HOST=$DOCKER_HOST DOCKER_TLS_VERIFY=$DOCKER_TLS_VERIFY DOCKER_CERT_PATH=$DOCKER_CERT_PATH /setup.sh run"
 CMD bash -c "chown teamcity:teamcity -R /home/teamctiy; su teamcity -l -c \"TEAMCITY_SERVER=$TEAMCITY_SERVER DOCKER_HOST=$DOCKER_HOST DOCKER_TLS_VERIFY=$DOCKER_TLS_VERIFY DOCKER_CERT_PATH=$DOCKER_CERT_PATH /setup.sh run\""
 
-RUN yum install -y epel-release qtwebkit-devel
-RUN yum install -y epel-release qtwebkit-devel
-RUN ln -s /usr/lib64/qt4/bin/qmake /usr/bin/qmake
-RUN yum install -y xorg-x11-server-Xvfb
-RUN yum install -y psmisc
+RUN yum install -y mariadb-server
+RUN mysql_install_db
+RUN chown mysql:mysql -R /var/lib/mysql
+RUN yum install -y postgresql-server
+RUN su postgres -l -c "/usr/bin/initdb /var/lib/pgsql/data/"
+RUN yum install -y redis
