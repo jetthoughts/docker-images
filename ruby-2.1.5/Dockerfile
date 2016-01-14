@@ -5,10 +5,6 @@ MAINTAINER Dmitriy Savin <its2exp@gmail.com>
 RUN apt-get update && apt-get install -y \
     git \
     wget \
-    zip \
-    mysql-server \
-    libmysqlclient-dev \
-    phantomjs \
     make \
     libssl-dev \
     libreadline-dev \
@@ -26,15 +22,4 @@ RUN rm -rf /ruby-2.1.5 /ruby-2.1.5.tar.gz
 
 RUN echo "gem: --no-ri --no-rdoc" > ~/.gemrc
 RUN gem install bundler
-
-ENV RAILS_ENV test
-ENV RACK_ENV test
-
-WORKDIR /project
-
-CMD bundle \
- && service mysql start \
- && rake db:create db:schema:load db:migrate \
- && rake db:test:prepare \
- && rspec
 
