@@ -1,18 +1,18 @@
 FROM ubuntu:14.04
-MAINTAINER Dmitriy Savin <its2exp@gmail.com>
+MAINTAINER Dmitriy Savin <dsa@jetthoughts.com>
 
 # Install dependencies
 RUN apt-get update && apt-get install -y \
-    git \
-    wget \
-    make \
-    libssl-dev \
-    libreadline-dev \
-    zlib1g-dev \
-    build-essential \
-    g++\
- && apt-get clean \
- && rm -rf /var/lib/apt/lists/*
+             git \
+             wget \
+             make \
+             libssl-dev \
+             libreadline-dev \
+             zlib1g-dev \
+             build-essential \
+             g++\
+          && apt-get clean \
+          && rm -rf /var/lib/apt/lists/*
 
 # Install Ruby 2.1.5
 RUN wget -O ruby-2.1.5.tar.gz http://ftp.ruby-lang.org/pub/ruby/2.1/ruby-2.1.5.tar.gz
