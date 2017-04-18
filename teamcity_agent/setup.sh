@@ -1,13 +1,16 @@
 #!/usr/bin/env bash
 
+
+
+
 env
 AGENT_DIR="${HOME}/agent"
 
 # Services
 
 /usr/bin/mysqld_safe > /dev/null 2>&1 &
-su postgres -c "/usr/bin/postgres -D /var/lib/pgsql/data -d 0 > /dev/null 2>&1 &"
-echo -e "loglevel warning \n daemonize yes \n" | redis-server -
+#su postgres -c "/usr/bin/postgres -D /var/lib/pgsql/data -d 0 > /dev/null 2>&1 &"
+#echo -e "loglevel warning \n daemonize yes \n" | redis-server -
 
 # TeamCity Agent
 if [ -z "$TEAMCITY_SERVER" ]; then
