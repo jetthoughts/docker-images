@@ -18,7 +18,8 @@ RUN apt-get update && apt-get install -y \
              libreadline-dev \
              zlib1g-dev \
              build-essential \
-             g++\
+             g++ \
+             xvfb \
           && apt-get clean \
           && rm -rf /var/lib/apt/lists/*
 
