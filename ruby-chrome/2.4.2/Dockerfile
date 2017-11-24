@@ -1,4 +1,4 @@
-FROM selenium/node-chrome:3.6.0
+FROM selenium/node-chrome:3.7.1
 MAINTAINER Michael Nikitochkin <miry.sof@gmail.com>
 
 USER root
@@ -35,17 +35,10 @@ RUN wget -O ruby.tar.xz "https://cache.ruby-lang.org/pub/ruby/${RUBY_MAJOR%-rc}/
   && make install \
   && rm -rf /usr/src/ruby
 
-RUN gem update --system \
- && gem install bundler
+ENV LANG=en_US.UTF-8
+ENV LANGUAGE=en_US.UTF-8
+ENV LC_ALL=en_US.UTF-8
 
-
-ENV GEM_HOME /usr/local/bundle
-ENV BUNDLE_PATH="$GEM_HOME" \
-	  BUNDLE_BIN="$GEM_HOME/bin" \
-	  BUNDLE_SILENCE_ROOT_WARNING=1 \
-	  BUNDLE_APP_CONFIG="$GEM_HOME"
-ENV PATH $BUNDLE_BIN:$PATH
-RUN mkdir -p "$GEM_HOME" "$BUNDLE_BIN" \
-	&& chmod 777 "$GEM_HOME" "$BUNDLE_BIN"
+RUN gem update --system
 
 CMD [ "irb" ]
