@@ -1,4 +1,4 @@
-FROM selenium/node-chrome:3.8.1
+FROM selenium/node-chrome:3.11.0
 MAINTAINER Michael Nikitochkin <miry.sof@gmail.com>
 
 USER root
@@ -20,10 +20,11 @@ RUN apt-get update && apt-get install -y \
              build-essential \
              g++ \
              xvfb \
+             curl \
           && apt-get clean \
           && rm -rf /var/lib/apt/lists/*
 
-ARG RUBY_VERSION="2.5.0"
+ARG RUBY_VERSION="2.5.1"
 ARG RUBY_MAJOR="2.5"
 RUN wget -O ruby.tar.xz "https://cache.ruby-lang.org/pub/ruby/${RUBY_MAJOR%-rc}/ruby-$RUBY_VERSION.tar.xz" \
   && mkdir -p /usr/src/ruby \
