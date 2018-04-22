@@ -4,7 +4,7 @@ MAINTAINER Michael Nikitochkin <miry.sof@gmail.com>
 RUN apk add --no-cache bash g++ git make openssl-dev python vim \
  && node --version \
  && npm --version \
- && python --version
+ && python --version \
  && npm install --global storjshare-daemon --unsafe \
  && npm cache clean --force \
  && apk del git openssl-dev python vim \
@@ -16,3 +16,5 @@ EXPOSE 4000
 EXPOSE 4001
 EXPOSE 4002
 EXPOSE 4003
+
+ENTRYPOINT [ "storjshare" ]
