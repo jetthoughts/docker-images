@@ -1,12 +1,13 @@
-FROM node:alpine
+FROM node:8-alpine
 MAINTAINER Michael Nikitochkin <miry.sof@gmail.com>
 
+USER root
 RUN apk add --no-cache bash g++ git make openssl-dev python vim \
  && node --version \
  && npm --version \
- && python --version \
- && npm install --global storjshare-daemon \
- && npm cache clean \
+ && python --version
+RUN npm install --global storjshare-daemon --unsafe \
+ && npm cache clean --force \
  && apk del git openssl-dev python vim \
  && rm -rf /var/cache/apk/* \
  && rm -rf /tmp/npm* \
