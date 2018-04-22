@@ -1,7 +1,6 @@
 FROM node:8-alpine
 MAINTAINER Michael Nikitochkin <miry.sof@gmail.com>
 
-USER root
 RUN apk add --no-cache bash g++ git make openssl-dev python vim \
  && node --version \
  && npm --version \
