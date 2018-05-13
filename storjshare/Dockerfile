@@ -1,5 +1,6 @@
 FROM node:8-alpine
-MAINTAINER Michael Nikitochkin <miry.sof@gmail.com>
+
+LABEL maintainer="miry.sof@gmail.com"
 
 RUN apk add --no-cache bash g++ git make openssl-dev python vim \
  && node --version \
@@ -12,9 +13,11 @@ RUN apk add --no-cache bash g++ git make openssl-dev python vim \
  && rm -rf /tmp/npm* \
  && storjshare --version
 
-EXPOSE 4000
-EXPOSE 4001
-EXPOSE 4002
-EXPOSE 4003
+ADD run.sh /
+RUN chmod 755 /run.sh
 
+ENV STORJ_PAYMENT_ADDRESS ""
+ENV STORJ_NETWORK_PRIVATE_KEY ""
+
+VOLUME [ "/root/.config/storjshare/" ]
 ENTRYPOINT [ "storjshare" ]
