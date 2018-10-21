@@ -2,10 +2,12 @@
 
 - centos7
 - teamcity-agent
-- kubernetes bins
+- kubernetes
+- ruby
 
 # Release
 
 ```
 $ make kubernetes
+$ make ruby-chrome
 ```
