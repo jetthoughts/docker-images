@@ -1,6 +1,6 @@
 # Image: jetthoughts/ruby-chrome
 
-ARG NODE_VERSION=3.14
+ARG NODE_VERSION=3.11.0
 
 FROM selenium/node-chrome:${NODE_VERSION}
 LABEL maintainer="Michael Nikitochkin <miry.sof@gmail.com>"
