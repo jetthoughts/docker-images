@@ -1,8 +1,8 @@
 KUBE_VERSION=v1.12.2
-RUBY_CHROME_VERSION=2.6.0-preview2-v2
-RUBY_VERSION=2.6.0-preview2
+RUBY_CHROME_VERSION=2.6.0-preview3-v1
+RUBY_VERSION=2.6.0-preview3
 RUBY_MAJOR=2.6-rc
-NODE_VERSION=3.11.0
+NODE_VERSION=3.141.5
 
 kubernetes: kubernetes-build kubernetes-push
 
