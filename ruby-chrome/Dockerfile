@@ -29,8 +29,8 @@ RUN apt-get update \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 
-ARG RUBY_VERSION="2.5.3"
-ARG RUBY_MAJOR="2.5"
+ARG RUBY_VERSION="2.6.0"
+ARG RUBY_MAJOR="2.6"
 RUN wget -O ruby.tar.xz "https://cache.ruby-lang.org/pub/ruby/${RUBY_MAJOR%-rc}/ruby-$RUBY_VERSION.tar.xz" \
   && mkdir -p /usr/src/ruby \
   && tar -xJf ruby.tar.xz -C /usr/src/ruby --strip-components=1 \
