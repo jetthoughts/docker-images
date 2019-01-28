@@ -1,11 +1,11 @@
 # Repo: miry/kubernetes
-# Build: docker build --build-arg RELEASE=v1.11.2 -t miry/kubernetes:v1.11.3 .
-# Build: docker build --build-arg RELEASE=v1.10.5 -t miry/kubernetes:v1.10.5 .
-FROM alpine:3.7
+# Build: docker build --build-arg RELEASE=v1.11.7 -t miry/kubernetes:v1.11.7 .
+FROM alpine:3.8
 
-RUN apk update && apk add ca-certificates && rm -rf /var/cache/apk/*
+RUN apk --no-cache add \
+      ca-certificates
 
-ARG RELEASE="v1.12.2"
+ARG RELEASE="v1.12.5"
 
 RUN cd /bin \
  && wget -q https://storage.googleapis.com/kubernetes-release/release/${RELEASE}/bin/linux/amd64/kubeadm \
