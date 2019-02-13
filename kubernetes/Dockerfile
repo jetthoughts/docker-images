@@ -5,7 +5,7 @@ FROM alpine:3.8
 RUN apk --no-cache add \
       ca-certificates
 
-ARG RELEASE="v1.12.5"
+ARG RELEASE="v1.13.5"
 
 RUN cd /bin \
  && wget -q https://storage.googleapis.com/kubernetes-release/release/${RELEASE}/bin/linux/amd64/kubeadm \
