@@ -8,6 +8,6 @@
 # Release
 
 ```
-$ make kubernetes KUBE_VERSION=v1.14.0-alpha.3
+$ make kubernetes KUBE_VERSION=v1.14.0-beta.1
 $ make ruby-chrome
 ```
