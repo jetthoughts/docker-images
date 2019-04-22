@@ -1,7 +1,7 @@
 KUBE_VERSION=v1.14.0
-RUBY_CHROME_VERSION=2.6.3-v1
-RUBY_VERSION=2.6.3
 RUBY_MAJOR=2.6
+RUBY_VERSION=$(RUBY_MAJOR).3
+RUBY_CHROME_VERSION=$(RUBY_VERSION)-v1
 NODE_VERSION=3.141.59
 BUILD_OPT=--no-cache
 kubernetes: kubernetes-build kubernetes-push
@@ -17,6 +17,9 @@ ruby-chrome: ruby-chrome-build ruby-chrome-push
 ruby-chrome-build:
 		docker build $(BUILD_OPT) --build-arg RUBY_VERSION=$(RUBY_VERSION) --build-arg RUBY_MAJOR=$(RUBY_MAJOR) --build-arg NODE_VERSION=$(NODE_VERSION) -t jetthoughts/ruby-chrome:latest -t jetthoughts/ruby-chrome:$(RUBY_CHROME_VERSION) ruby-chrome
 
-ruby-chrome-push:
+ruby-chrome-push: ruby-chrome-analyze
 		docker push jetthoughts/ruby-chrome:$(RUBY_CHROME_VERSION)
 		docker push jetthoughts/ruby-chrome:latest
+
+ruby-chrome-analyze:
+		CI=true dive jetthoughts/ruby-chrome:$(RUBY_CHROME_VERSION)
