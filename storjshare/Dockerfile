@@ -7,6 +7,7 @@ RUN apk add --no-cache bash g++ git make openssl-dev python vim \
  && npm --version \
  && python --version \
  && npm install --global storjshare-daemon --unsafe \
+ && npm install --save @babel/runtime \
  && npm cache clean --force \
  && apk del git openssl-dev python vim \
  && rm -rf /var/cache/apk/* \
