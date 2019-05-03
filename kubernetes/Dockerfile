@@ -3,9 +3,13 @@
 FROM alpine:edge
 
 RUN apk --no-cache add \
-      ca-certificates
+      bash \
+      ca-certificates \
+      curl \
+      git \
+      openssh-client
 
-ARG RELEASE="v1.14.0"
+ARG RELEASE="v1.14.1"
 
 RUN cd /bin \
  && wget -q https://storage.googleapis.com/kubernetes-release/release/${RELEASE}/bin/linux/amd64/kubeadm \
