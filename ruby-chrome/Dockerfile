@@ -20,30 +20,6 @@ RUN mkdir -p /usr/local/etc \
   echo 'update: --no-document'; \
  } >> /usr/local/etc/gemrc \
  && apt-get update \
-# Online Games Bot Engine
-
-A simple bot for auto-building and gain resources via missions. Tested on Linux and MacOS.
-Supports Lords and Knights 2020 version.
-
-# Lords and Knights
-
-Website: https://lordsandknights.com
-Naive bot solution to optimize your nights and days.
-Spent more time on what is matter, than do a routine job.
-
-## Features
-
-### Automate buildings
-
-Do continuous buildings in any order, that you specify. Feel free to use my strategy from [config/servers.yml.example](config/servers.yml.example).
-
-### Research
-
-Do research in **Library** or **University**. Dumb approach - the first available research.
-
-### Missions
-
-Continuously send troops to missions. **WARNING**: Disable it manually , if you have a war or require troops for something.
  && apt-get install -y \
                     git \
                     wget \
