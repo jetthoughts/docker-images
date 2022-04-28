@@ -7,15 +7,19 @@ on:
       - cimg-ruby/Dockerfile
     branches:
       - master
+      - support-more-rubies
   schedule:
     - cron: '0 0 */5 * *'
 
 env:
   IMAGE_NAME: jetthoughts/cimg-ruby
-  TAG_NAME: 3.1-chrome
 
 jobs:
   build-and-push-image:
+    strategy:
+      matrix:
+        version: [ "3.1", "3.0", "2.7" ]
+
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -54,11 +58,12 @@ jobs:
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
         with:
           context: ./cimg-ruby/
+          build-args: RUBY_VERSION=${{ matrix.version }}
           push: true
           platforms: linux/amd64,linux/arm64
           labels: ${{ steps.meta.outputs.labels }}
           tags: |
-            ${{ env.IMAGE_NAME }}:${{ env.TAG_NAME }}
+            ${{ env.IMAGE_NAME }}:${{ matrix.version }}-chrome
             ${{ env.IMAGE_NAME }}:latest
-            ghcr.io/${{ env.IMAGE_NAME }}:${{ env.TAG_NAME }}
+            ghcr.io/${{ env.IMAGE_NAME }}:${{ matrix.version }}-chrome
             ghcr.io/${{ env.IMAGE_NAME }}:latest
