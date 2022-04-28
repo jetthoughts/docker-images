@@ -1,4 +1,6 @@
-FROM cimg/ruby:3.1-browsers
+ARG RUBY_VERSION="3.1"
+
+FROM cimg/ruby:${RUBY_VERSION}-browsers
 
 # Install Chrome
 
