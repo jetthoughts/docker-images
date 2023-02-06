@@ -1,6 +1,9 @@
 name: Create & Publish jetthoughts/cimg-ruby to DockerHub & GitHubCR
 
 on:
+  pull_request:
+    paths:
+      - 'cimg-ruby/Dockerfile'
   workflow_dispatch:
   push:
     paths:
