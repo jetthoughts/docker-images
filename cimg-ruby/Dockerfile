@@ -16,5 +16,5 @@ RUN wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-ke
   && sudo apt-get autoclean \
   && sudo apt-get autoremove \
   && sudo rm -rf /var/cache/apt/archives/* \
-  && sudo rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
+  && sudo rm -rf /tmp/* /var/tmp/* \
   && sudo truncate -s 0 /var/log/*log
