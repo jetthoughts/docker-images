@@ -3,7 +3,7 @@ name: Create & Publish jetthoughts/cimg-ruby to DockerHub & GitHubCR
 on:
   pull_request:
     paths:
-      - 'cimg-ruby/Dockerfile'
+      - cimg-ruby/Dockerfile
   workflow_dispatch:
   push:
     paths:
@@ -12,7 +12,7 @@ on:
       - master
       - support-more-rubies
   schedule:
-    - cron: '0 0 */5 * *'
+    - cron: "0 0 */5 * *"
 
 env:
   IMAGE_NAME: jetthoughts/cimg-ruby
