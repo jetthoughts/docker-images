@@ -3,11 +3,11 @@ name: Create & Publish jetthoughts/cimg-ruby to DockerHub & GitHubCR
 on:
   pull_request:
     paths:
-      - cimg-ruby/Dockerfile
+      - 'cimg-ruby/**'
   workflow_dispatch:
   push:
     paths:
-      - cimg-ruby/Dockerfile
+      - 'cimg-ruby/**'
     branches:
       - master
       - support-more-rubies
@@ -21,7 +21,7 @@ jobs:
   build-and-push-image:
     strategy:
       matrix:
-        version: [ "3.2", "3.1" ]
+        version: [ "3.3", "3.2", "3.1" ]
 
     runs-on: ubuntu-latest
     permissions:
