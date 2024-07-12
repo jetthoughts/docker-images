@@ -63,7 +63,7 @@ jobs:
           context: ./cimg-ruby/
           build-args: RUBY_VERSION=${{ matrix.version }}
           push: true
-          platforms: linux/amd64
+          platforms: ["linux/amd64", "linux/arm64"]
           labels: ${{ steps.meta.outputs.labels }}
           tags: |
             ${{ env.IMAGE_NAME }}:${{ matrix.version }}-chrome
