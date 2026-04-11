@@ -1,7 +1,7 @@
 # cimg-ruby Dockerfile
 # Builds on top of cimg/ruby:<version>-browsers and ensures Chrome is available.
 # Adds labels and healthcheck for easier support.
-ARG RUBY_VERSION="3.4"
+ARG RUBY_VERSION="4.0"
 FROM cimg/ruby:${RUBY_VERSION}-browsers
 
 LABEL maintainer="JetThoughts <dev@jetthoughts.com>"
